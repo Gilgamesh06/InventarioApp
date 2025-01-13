@@ -4,7 +4,7 @@ en la base de datos.
 """
 
 from sqlalchemy import Column, Integer, String, Float
-from ..config.db import Base
+from config.db import Base
 from sqlalchemy.orm import relationship
 
 class Producto(Base):
@@ -19,8 +19,8 @@ class Producto(Base):
     valor_venta = Column(Float,nullable=False)
 
     # Relacion uno a muchos con ProveedorProducto
-    proveedores = relationship("Proveedor", secondary="ProveedorProducto",back_populates="productos")
+    proveedores = relationship("ProveedorProducto",back_populates="producto")
     # Relacion uno a muchos con MermaProducto
-    mermas = relationship("Merma", secondary="MermaProducto",back_populates="productos")
+    mermas = relationship("MermaProducto",back_populates="producto")
     # Relacion uno a uno Producto
     inventario = relationship("Inventario",back_populates="producto")
