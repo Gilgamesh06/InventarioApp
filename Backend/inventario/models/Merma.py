@@ -4,7 +4,7 @@ en la base de datos.
 """
 
 from sqlalchemy import Column, Integer, String, DATE
-from ..config.db import Base
+from config.db import Base
 from sqlalchemy.orm import relationship
 
 class Merma(Base):
@@ -15,5 +15,5 @@ class Merma(Base):
     fecha = Column(DATE,nullable=False)
 
     # Relacion uno a muchos con MermaProducto
-    productos = relationship("Producto", secondary="MermaProducto",back_populates="mermas")
+    productos = relationship("MermaProducto",back_populates="merma")
 
